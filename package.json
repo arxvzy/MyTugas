@@ -1,0 +1,16 @@
+{
+  "name": "assignment-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i assets/input.css -o assets/style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "daisyui": "^3.9.3",
+    "tailwindcss": "^3.3.3"
+  }
+}

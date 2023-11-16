@@ -1,0 +1,16 @@
+<div class="flex justify-between gap-3">
+          <label for="keterangan" class="text-black my-auto"
+            >Keterangan Tugas
+          </label>
+          <div class="flex justify-center gap-5 w-1/2">
+            <p class="text-center my-auto text-black">:</p>
+            <input
+              type="text"
+              id="keterangan"
+              placeholder="Keterangan"
+              class="py-2 text-center bg-white w-full"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>

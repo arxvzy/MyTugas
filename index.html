@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTugas</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/book-solid.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gray-100 h-screen text-gray-600 font-poppins font-medium md:text-base text-sm"
+  >
+    <section
+      id="action"
+      class="z-50 left-0 top-0 right-0 bottom-0 mx-auto w-full bg-slate-100 flex-col bg-opacity-90 backdrop-blur-sm hidden"
+    >
+      <form
+        action=""
+        class="my-auto flex flex-col mx-auto gap-7 md:w-1/2 w-full text-black"
+      >
+        <div class="flex justify-between gap-3 mx-10">
+          <label for="matkul" class="text-black my-auto">Mata Kuliah </label>
+          <div class="flex justify-center gap-5 w-1/2">
+            <p class="text-center my-auto text-black">:</p>
+            <input
+              type="text"
+              id="matkul"
+              placeholder="Mata Kuliah"
+              class="py-2 text-center bg-white w-full"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="flex justify-between gap-3 mx-10">
+          <label for="keterangan" class="text-black my-auto"
+            >Keterangan Tugas
+          </label>
+          <div class="flex justify-center gap-5 w-1/2">
+            <p class="text-center my-auto text-black">:</p>
+            <input
+              type="text"
+              id="keterangan"
+              placeholder="Keterangan"
+              class="py-2 text-center bg-white w-full"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="flex justify-between gap-3 mx-10">
+          <label for="tenggat" class="text-black my-auto">Tenggat</label>
+          <div class="flex justify-center w-1/2 gap-5">
+            <p class="text-center my-auto text-black">:</p>
+            <input
+              type="date"
+              name="tenggat"
+              id="tenggat"
+              class="py-2 text-center bg-white text-black w-full"
+              autocomplete="off"
+              required
+            />
+          </div>
+        </div>
+        <div class="flex justify-between gap-3 mx-10">
+          <label for="pengumpulan" class="text-black my-auto"
+            >Pengumpulan</label
+          >
+          <div class="flex justify-center gap-5 w-1/2">
+            <p class="text-center my-auto text-black">:</p>
+            <input
+              type="text"
+              id="pengumpulan"
+              placeholder="Pengumpulan"
+              class="py-2 text-center bg-white w-full"
+              autocomplete="off"
+              required
+            />
+          </div>
+        </div>
+        <div class="mt-10 w-full mx-auto flex justify-center gap-4 text-center">
+          <input
+            type="submit"
+            value="Submit"
+            class="btn btn-success"
+            id="submit"
+          />
+          <input
+            type="submit"
+            value="Save"
+            class="btn btn-success hidden"
+            id="save"
+          />
+
+          <input
+            type="button"
+            value="Cancel"
+            class="btn btn-error"
+            id="cancel"
+          />
+        </div>
+      </form>
+    </section>
+    <div class="container mx-auto px-4 py-5">
+      <h2 class="md:text-xl text-lg font-bold mb-5">MyTugas</h2>
+      <button type="button" class="btn btn-primary" id="tambah">Tambah</button>
+      <div class="overflow-x-auto mt-5">
+        <table class="table-auto border-collapse w-full">
+          <thead>
+            <tr
+              class="md:text-sm text-xs font-semibold text-gray-700 bg-gray-200"
+            >
+              <th class="border py-2"></th>
+              <th class="border px-4 py-2">Mata Kuliah</th>
+              <th class="border px-4 py-2">Keterangan</th>
+              <th class="border px-4 py-2">Tenggat</th>
+              <th class="border px-4 py-2">Pengumpulan</th>
+              <th class="border px-4 py-2"></th>
+            </tr>
+          </thead>
+          <tbody id="table" class="text-center">
+            <!-- Table rows will be generated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9d07654098.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
