@@ -89,8 +89,7 @@ const createData = async () => {
       deadlineInput.value = dataTugas[index].deadline;
       pengumpulanInput.value = dataTugas[index].pengumpulan;
 
-      saveButton.addEventListener("click", (e) => {
-        e.preventDefault();
+      saveButton.addEventListener("click", () => {
         dataTugas[index].matkul = matkulInput.value;
         dataTugas[index].keterangan = keteranganInput.value;
         dataTugas[index].deadline = deadlineInput.value;
