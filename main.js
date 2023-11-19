@@ -20,6 +20,65 @@ if (readData !== null) {
   });
 }
 
+// EDIT DATA
+const tempData = [];
+const updateData = () => {
+  editButton = document.querySelectorAll(".update");
+  saveButton = document.querySelector("#save");
+  editButton.forEach((value, index) => {
+    value.addEventListener("click", () => {
+      tempData.push({
+        id: index,
+        matkul: dataTugas[index].matkul,
+        keterangan: dataTugas[index].keterangan,
+        deadline: dataTugas[index].deadline,
+        pengumpulan: dataTugas[index].pengumpulan,
+      });
+      saveButton.classList.remove("hidden");
+      submitButton.classList.add("hidden");
+      actionElement.classList.remove("hidden");
+      actionElement.classList.add("absolute");
+      actionElement.classList.add("flex");
+      matkulInput.value = dataTugas[index].matkul;
+      keteranganInput.value = dataTugas[index].keterangan;
+      deadlineInput.value = dataTugas[index].deadline;
+      pengumpulanInput.value = dataTugas[index].pengumpulan;
+    });
+  });
+
+  saveButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    try {
+      dataTugas[tempData[0].id].matkul = matkulInput.value;
+      dataTugas[tempData[0].id].keterangan = keteranganInput.value;
+      dataTugas[tempData[0].id].deadline = deadlineInput.value;
+      dataTugas[tempData[0].id].pengumpulan = pengumpulanInput.value;
+      localStorage.setItem("dataTugas", JSON.stringify(dataTugas));
+      createData();
+      tempData.pop();
+      actionElement.classList.remove("absolute");
+      actionElement.classList.add("hidden");
+      saveButton.classList.add("hidden");
+      submitButton.classList.remove("hidden");
+    } catch (err) {}
+  });
+};
+
+// DELETE DATA
+const deleteData = () => {
+  let deleteButton = document.querySelectorAll(".delete");
+  deleteButton.forEach((value, index) => {
+    value.addEventListener("click", (e) => {
+      e.preventDefault();
+      delete dataTugas[index];
+      dataTugas = dataTugas.filter((item) => item !== undefined);
+      createData();
+      deleteButton = document.querySelectorAll(".delete");
+      localStorage.setItem("dataTugas", JSON.stringify(dataTugas));
+    });
+  });
+};
+
 const createData = async () => {
   while (table.firstChild) {
     table.removeChild(table.firstChild);
@@ -59,50 +118,8 @@ const createData = async () => {
     actionColumn.appendChild(editButtonColumn);
   });
 
-  // DELETE DATA
-  let deleteButton = document.querySelectorAll(".delete");
-  deleteButton.forEach((value, index) => {
-    value.addEventListener("click", (e) => {
-      e.preventDefault();
-      delete dataTugas[index];
-      dataTugas = dataTugas.filter((item) => item !== undefined);
-      createData();
-      deleteButton = document.querySelectorAll(".delete");
-      localStorage.setItem("dataTugas", JSON.stringify(dataTugas));
-    });
-  });
-
-  // EDIT DATA
-  editButton = document.querySelectorAll(".update");
-  saveButton = document.querySelector("#save");
-
-  editButton.forEach((value, index) => {
-    value.addEventListener("click", (e) => {
-      e.preventDefault();
-      saveButton.classList.remove("hidden");
-      submitButton.classList.add("hidden");
-      actionElement.classList.remove("hidden");
-      actionElement.classList.add("absolute");
-      actionElement.classList.add("flex");
-      matkulInput.value = dataTugas[index].matkul;
-      keteranganInput.value = dataTugas[index].keterangan;
-      deadlineInput.value = dataTugas[index].deadline;
-      pengumpulanInput.value = dataTugas[index].pengumpulan;
-
-      saveButton.addEventListener("click", () => {
-        dataTugas[index].matkul = matkulInput.value;
-        dataTugas[index].keterangan = keteranganInput.value;
-        dataTugas[index].deadline = deadlineInput.value;
-        dataTugas[index].pengumpulan = pengumpulanInput.value;
-        localStorage.setItem("dataTugas", JSON.stringify(dataTugas));
-        createData();
-        actionElement.classList.remove("absolute");
-        actionElement.classList.add("hidden");
-        saveButton.classList.add("hidden");
-        submitButton.classList.remove("hidden");
-      });
-    });
-  });
+  deleteData();
+  updateData();
 };
 createData();
 
@@ -139,6 +156,7 @@ submitButton.addEventListener("click", (e) => {
 // Cancel Button
 
 cancelButton.addEventListener("click", () => {
+  tempData.pop();
   actionElement.classList.remove("absolute");
   actionElement.classList.remove("flex");
   actionElement.classList.add("hidden");
